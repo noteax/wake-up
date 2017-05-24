@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dirty Pidr</title>
+    <style type="text/css">
+        @font-face {
+            font-family: Whiterabt;
+            src: url(fonts/whitrabt.ttf);
+        }
+
+        body {
+            background-color: #161616;
+            color: #4d9a41;
+            font-family: Whiterabt;
+        }
+
+        p {
+            line-height: 1.4em;
+        }
+    </style>
+</head>
+<body>
+<p id="message"></p>
+</body>
+
+<script language="javascript">
+    function showText(target, message, index, interval) {
+        if (index < message.length) {
+            var item = message[index++];
+            target.insertAdjacentHTML('beforeend', item == '%' ? "<br>" : item);
+            setTimeout(function () {
+                showText(target, message, index, interval);
+            }, interval);
+        }
+    }
+    (function () {
+        showText(document.getElementById("message"),
+            "Wake up, Neo...%\
+            Infotech has you...%\
+            Follow the white rabbit.%%%%\
+            Knock, knock, Neo.%\
+            You are not the one. Wake up!", 0, 100);
+    })();
+</script>
+</html>
